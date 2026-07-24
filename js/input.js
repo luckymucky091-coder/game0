@@ -53,3 +53,48 @@ export class Input{
     }
 
 }
+setupTouch(){
+
+const left=document.getElementById("leftButton");
+
+const right=document.getElementById("rightButton");
+
+const jump=document.getElementById("jumpButton");
+
+left.addEventListener("touchstart",()=>{
+
+this.keys["KeyA"]=true;
+
+});
+
+left.addEventListener("touchend",()=>{
+
+this.keys["KeyA"]=false;
+
+});
+
+right.addEventListener("touchstart",()=>{
+
+this.keys["KeyD"]=true;
+
+});
+
+right.addEventListener("touchend",()=>{
+
+this.keys["KeyD"]=false;
+
+});
+
+jump.addEventListener("touchstart",()=>{
+
+this.keys["Space"]=true;
+
+});
+
+jump.addEventListener("touchend",()=>{
+
+this.keys["Space"]=false;
+
+});
+
+}
