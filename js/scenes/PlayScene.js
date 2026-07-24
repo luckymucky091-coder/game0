@@ -1,30 +1,53 @@
-export class PlayScene{
+import { Player } from "../player.js";
+import { World } from "../world.js";
 
-    constructor(game){
+export class PlayScene {
 
-        this.game=game;
+    constructor(game) {
+
+        this.game = game;
+
+        this.player = null;
+        this.world = null;
 
     }
 
-    enter(){}
+    enter() {
 
-    exit(){}
+        this.world = new World();
 
-    update(){}
+        this.player = new Player(this.game);
 
-    render(ctx){
+    }
 
-        ctx.fillStyle="#6BCB77";
+    exit() {
 
-        ctx.fillRect(0,0,1280,720);
+    }
 
-        ctx.fillStyle="black";
+    update(dt) {
 
-        ctx.font="30px Arial";
+        this.player.update(dt);
 
-        ctx.fillText("Gameplay Scene",30,50);
+        this.game.camera.update(this.player);
 
-        ctx.fillText("FPS : "+this.game.fps,30,90);
+    }
+
+    render(ctx) {
+
+        // วาดฉาก
+        this.world.draw(ctx, this.game.camera);
+
+        // วาดผู้เล่น
+        this.player.draw(ctx, this.game.camera);
+
+        // HUD
+        ctx.fillStyle = "white";
+        ctx.font = "22px Arial";
+
+        ctx.fillText("Quiz Land P6", 20, 35);
+        ctx.fillText("FPS : " + this.game.fps, 20, 65);
+        ctx.fillText("X : " + Math.floor(this.player.x), 20, 95);
+        ctx.fillText("Y : " + Math.floor(this.player.y), 20, 125);
 
     }
 
