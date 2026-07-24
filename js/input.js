@@ -1,100 +1,91 @@
-export class Input{
+export class Input {
 
-    constructor(){
+    constructor() {
 
-        this.keys={};
+        this.keys = {};
 
-        window.addEventListener("keydown",(e)=>{
-
-            this.keys[e.code]=true;
-
+        // Keyboard
+        window.addEventListener("keydown", (e) => {
+            this.keys[e.code] = true;
         });
 
-        window.addEventListener("keyup",(e)=>{
+        window.addEventListener("keyup", (e) => {
+            this.keys[e.code] = false;
+        });
 
-            this.keys[e.code]=false;
+        // เปิดใช้งาน Touch Controls
+        this.setupTouch();
+    }
 
+    setupTouch() {
+
+        const left = document.getElementById("leftButton");
+        const right = document.getElementById("rightButton");
+        const jump = document.getElementById("jumpButton");
+
+        // ถ้ายังไม่มีปุ่ม ให้ไม่ทำงาน
+        if (!left || !right || !jump) return;
+
+        // ===== Left =====
+        left.addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            this.keys["KeyA"] = true;
+            this.keys["ArrowLeft"] = true;
+        });
+
+        left.addEventListener("touchend", () => {
+            this.keys["KeyA"] = false;
+            this.keys["ArrowLeft"] = false;
+        });
+
+        // ===== Right =====
+        right.addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            this.keys["KeyD"] = true;
+            this.keys["ArrowRight"] = true;
+        });
+
+        right.addEventListener("touchend", () => {
+            this.keys["KeyD"] = false;
+            this.keys["ArrowRight"] = false;
+        });
+
+        // ===== Jump =====
+        jump.addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            this.keys["Space"] = true;
+            this.keys["ArrowUp"] = true;
+            this.keys["KeyW"] = true;
+        });
+
+        jump.addEventListener("touchend", () => {
+            this.keys["Space"] = false;
+            this.keys["ArrowUp"] = false;
+            this.keys["KeyW"] = false;
         });
 
     }
 
-    left(){
-
-        return this.keys["ArrowLeft"] ||
-               this.keys["KeyA"];
-
+    left() {
+        return this.keys["ArrowLeft"] || this.keys["KeyA"];
     }
 
-    right(){
-
-        return this.keys["ArrowRight"] ||
-               this.keys["KeyD"];
-
+    right() {
+        return this.keys["ArrowRight"] || this.keys["KeyD"];
     }
 
-    jump(){
-
+    jump() {
         return this.keys["Space"] ||
                this.keys["ArrowUp"] ||
                this.keys["KeyW"];
-
     }
 
-    enter(){
-
+    enter() {
         return this.keys["Enter"];
-
     }
 
-    esc(){
-
+    esc() {
         return this.keys["Escape"];
-
     }
-
-}
-setupTouch(){
-
-const left=document.getElementById("leftButton");
-
-const right=document.getElementById("rightButton");
-
-const jump=document.getElementById("jumpButton");
-
-left.addEventListener("touchstart",()=>{
-
-this.keys["KeyA"]=true;
-
-});
-
-left.addEventListener("touchend",()=>{
-
-this.keys["KeyA"]=false;
-
-});
-
-right.addEventListener("touchstart",()=>{
-
-this.keys["KeyD"]=true;
-
-});
-
-right.addEventListener("touchend",()=>{
-
-this.keys["KeyD"]=false;
-
-});
-
-jump.addEventListener("touchstart",()=>{
-
-this.keys["Space"]=true;
-
-});
-
-jump.addEventListener("touchend",()=>{
-
-this.keys["Space"]=false;
-
-});
 
 }
