@@ -123,3 +123,5 @@ export class Game {
     }
 
 }
+import { Input } from "./input.js";
+this.input = new Input();
