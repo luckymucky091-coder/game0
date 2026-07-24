@@ -1,13 +1,14 @@
 export class Camera {
 
-    constructor() {
+    constructor(){
 
         this.x = 0;
+
         this.y = 0;
 
     }
 
-    update(player) {
+    update(player){
 
         this.x = player.x - 640 + player.width/2;
 
