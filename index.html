@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport"
-        content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <title>Quiz Land P6</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ui/touch.css">
+
 </head>
 
 <body>
 
-<div id="game-container">
+    <div id="game-container">
 
-    <canvas id="gameCanvas"></canvas>
+        <canvas id="gameCanvas"></canvas>
 
-</div>
+    </div>
 
-<script type="module" src="js/main.js"></script>
+    <div id="mobileUI">
 
-    <link rel="stylesheet" href="ui/touch.css">
+        <div id="leftButton">◀</div>
 
-<div id="mobileUI">
+        <div id="rightButton">▶</div>
 
-    <div id="leftButton">◀</div>
+        <div id="jumpButton">▲</div>
 
-    <div id="rightButton">▶</div>
+        <div id="pauseButton">II</div>
 
-    <div id="jumpButton">▲</div>
+    </div>
 
-    <div id="pauseButton">II</div>
+    <script type="module" src="js/main.js"></script>
 
-</div>
 </body>
+
 </html>
