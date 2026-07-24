@@ -4,20 +4,22 @@ export class Player {
 
         this.game = game;
 
+        this.x = 200;
+        this.y = 300;
+
         this.width = 48;
         this.height = 64;
 
-        this.x = 200;
-        this.y = 200;
+        this.speed = 300;
 
         this.vx = 0;
         this.vy = 0;
 
-        this.speed = 320;
-        this.jumpForce = -700;
         this.gravity = 1800;
+        this.jumpForce = -700;
 
         this.onGround = false;
+
     }
 
     update(dt) {
@@ -25,15 +27,11 @@ export class Player {
         this.vx = 0;
 
         if (this.game.input.left()) {
-
             this.vx = -this.speed;
-
         }
 
         if (this.game.input.right()) {
-
             this.vx = this.speed;
-
         }
 
         if (this.game.input.jump() && this.onGround) {
@@ -49,8 +47,6 @@ export class Player {
         this.x += this.vx * dt;
 
         this.y += this.vy * dt;
-
-        // ชนพื้น
 
         const ground = 600;
 
@@ -68,12 +64,13 @@ export class Player {
 
     draw(ctx, camera) {
 
-        ctx.fillStyle = "#ff66aa";
+        ctx.fillStyle = "#ff69b4";
 
         ctx.fillRect(
 
             this.x - camera.x,
             this.y - camera.y,
+
             this.width,
             this.height
 
