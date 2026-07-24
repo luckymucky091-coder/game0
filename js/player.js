@@ -27,12 +27,18 @@ export class Player {
         this.vx = 0;
 
         if (this.game.input.left()) {
-            this.vx = -this.speed;
-        }
 
-        if (this.game.input.right()) {
-            this.vx = this.speed;
-        }
+    this.vx = -this.speed;
+    this.direction = -1;
+
+}
+
+if (this.game.input.right()) {
+
+    this.vx = this.speed;
+    this.direction = 1;
+
+}
 
         if (this.game.input.jump() && this.onGround) {
 
