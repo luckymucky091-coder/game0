@@ -1,20 +1,23 @@
-export class Camera{
+export class Camera {
 
-    constructor(){
+    constructor() {
 
-        this.x=0;
-
-        this.y=0;
-
-        this.zoom=1;
+        this.x = 0;
+        this.y = 0;
 
     }
 
-    follow(target){
+    update(player) {
 
-        this.x=target.x-640;
+        this.x = player.x - 640 + player.width/2;
 
-        this.y=target.y-360;
+        if(this.x < 0){
+
+            this.x = 0;
+
+        }
+
+        this.y = 0;
 
     }
 
