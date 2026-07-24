@@ -62,20 +62,28 @@ export class Player {
 
     }
 
-    draw(ctx, camera) {
+   draw(ctx, camera) {
 
-        ctx.fillStyle = "#ff69b4";
+    ctx.save();
 
-        ctx.fillRect(
+    ctx.translate(
+        this.x - camera.x + this.width / 2,
+        this.y - camera.y
+    );
 
-            this.x - camera.x,
-            this.y - camera.y,
+    ctx.scale(this.direction, 1);
 
-            this.width,
-            this.height
+    ctx.fillStyle = "#ff69b4";
 
-        );
+    ctx.fillRect(
+        -this.width / 2,
+        0,
+        this.width,
+        this.height
+    );
 
-    }
+    ctx.restore();
+
+}
 
 }
