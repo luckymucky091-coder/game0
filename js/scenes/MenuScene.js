@@ -1,32 +1,44 @@
-export class MenuScene{
+export class MenuScene {
 
-    constructor(game){
+    constructor(game) {
 
-        this.game=game;
+        this.game = game;
 
     }
 
-    enter(){}
+    enter() {
 
-    exit(){}
+    }
 
-    update(){}
+    exit() {
 
-    render(ctx){
+    }
 
-        ctx.fillStyle="#4AA8FF";
+    update() {
 
-        ctx.fillRect(0,0,1280,720);
+        // กด Space, W, ลูกศรขึ้น หรือ Enter เพื่อเริ่มเกม
+        if (this.game.input.jump() || this.game.input.enter()) {
 
-        ctx.fillStyle="white";
+            this.game.sceneManager.change("play");
 
-        ctx.font="70px Arial";
+        }
 
-        ctx.fillText("Quiz Land P6",360,150);
+    }
 
-        ctx.font="32px Arial";
+    render(ctx) {
 
-        ctx.fillText("Press SPACE",500,500);
+        ctx.fillStyle = "#4AA8FF";
+        ctx.fillRect(0, 0, 1280, 720);
+
+        ctx.fillStyle = "white";
+        ctx.font = "70px Arial";
+        ctx.fillText("Quiz Land P6", 330, 180);
+
+        ctx.font = "30px Arial";
+        ctx.fillText("Press SPACE or ENTER", 420, 320);
+
+        ctx.font = "24px Arial";
+        ctx.fillText("Computer Quiz Adventure", 440, 380);
 
     }
 
